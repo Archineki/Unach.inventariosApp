@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Unach.inventariosApp.Vistas.LoginPage"
+             xmlns:ViewModel="clr-namespace:Unach.InventarioApp.Core.ViewModel;assembly=Unach.InventarioApp.Core"
+             >
+
+    <ContentPage.BindingContext>
+        <ViewModel:LoginViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Usuario"/>
+            <Entry Text="{Binding User.Usuario}"/>
+            <Label Text="Contraseña"/>
+            <Entry Text="{Binding User.Password}" IsPassword="True"/>
+            <Button Text="Iniciar Sesión" Command="{Binding LoginCommand}"/>
+            <Button Text="Saludar" Command="{Binding SaludarCommand}"/>
+
+            <Label Text="{Binding Mensaje}"
+           TextColor="Red"
+           FontSize="30"
+           FontFamily="Arial"
+           FontAttributes="Bold"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
