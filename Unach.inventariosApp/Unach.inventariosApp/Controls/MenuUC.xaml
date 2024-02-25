@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Unach.inventariosApp.Controls.MenuUC">
+  <ContentView.Content>
+        <Frame
+            CornerRadius="10"
+            BackgroundColor="#f4f4f4">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="Refresh.png"
+                       Grid.RowSpan="2"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"
+                       x:Name="IconoImage"/>
+
+                <Label Text="Sincronizar"
+                       TextColor="Black"
+                       FontSize="16"
+                       FontFamily="Arial"
+                       FontAttributes="Bold"
+                       Grid.Column="1"
+                       VerticalOptions="CenterAndExpand"
+                       x:Name="TituloLabel"/>
+                
+                <Label Text="Esta opción permite sincronizar los datos que se encuentran en la base de datos local y lo envía a través de una API"
+                       TextColor="Gray"
+                       FontSize="14"
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       x:Name="SubTituloLabel"/>
+
+            </Grid>
+
+        </Frame>
+    </ContentView.Content>
+</ContentView>

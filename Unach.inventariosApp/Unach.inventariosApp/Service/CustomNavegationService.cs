@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Unach.inventariosApp.Service;
@@ -19,7 +20,7 @@ namespace Unach.inventariosApp.Service
         {
             await App.Current.MainPage.Navigation.PopAsync(true);
         }
-        public Task NavegarA(string Pagina)
+        public async Task<bool> NavegarA(string Pagina)
         {
             switch (Pagina)
             {
@@ -27,19 +28,39 @@ namespace Unach.inventariosApp.Service
                     App.Current.MainPage = new NavigationPage(new Vistas.LoginPage());
                     break;
                 case "Principal":
-                    App.Current.MainPage.Navigation.PushAsync (new Vistas.PrincipalPage());
+                    //App.Current.MainPage.Navigation.PushAsync (new Vistas.PrincipalPage());
+                  await  ExistePagina(new Vistas.PrincipalPage());
+                    break;
+                case "Registro":
+                    await ExistePagina(new Vistas.PrincipalPage());
+                    break;
+                    
+                default:
+                    break;
+            }
+            return await Task.FromResult(true);
+        }
+
+        public async Task NavegarA(string Pagina, object[] parameters)
+        {
+            switch (Pagina)
+            {
+                case "Registro":
+                    await App.Current.MainPage.Navigation.PushAsync(new Vistas.RegistroPage(parameters));
                     break;
                 default:
                     break;
             }
-            return new Task(() => { });
         }
 
-        public Task NavegarA(string Pagina, object[] parameters)
+        public async Task ExistePagina(Page pagina)
         {
-            throw new NotImplementedException();
+            //Mostrar las páginas apiladas
+            List<Page> ListaDePaginas = App.Current.MainPage.Navigation.NavigationStack.ToList();
+            //Buscar la pantalla enviada, llamada "pagina" 
+            short PaginasSimilaresApiladas = (short)ListaDePaginas.Where(p => p.GetType() == pagina.GetType()).Count();
+            if (PaginasSimilaresApiladas < 1)
+                await App.Current.MainPage.Navigation.PushAsync(pagina, true);
         }
-
- 
     }
 }

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Unach.inventariosApp.Vistas.LoginPage"
              xmlns:ViewModel="clr-namespace:Unach.InventarioApp.Core.ViewModel;assembly=Unach.InventarioApp.Core"
-             >
+             xmlns:UC="clr-namespace:Unach.inventariosApp.Controls">
 
     <ContentPage.BindingContext>
         <ViewModel:LoginViewModel/>
@@ -18,10 +18,31 @@
             <Button Text="Saludar" Command="{Binding SaludarCommand}"/>
 
             <Label Text="{Binding Mensaje}"
-           TextColor="Red"
-           FontSize="30"
-           FontFamily="Arial"
-           FontAttributes="Bold"/>
+                 TextColor="Red"
+                 FontSize="30"
+                 FontFamily="Arial"
+                 FontAttributes="Bold"/>
+
+            <UC:MenuUC Margin="20,0,20,0" 
+                       Titulo="Sincronizar" 
+                       SubTitulo="Permite sincronizar la información"
+                       ImagenIcon="Sync.png"/>
+            
+            <UC:MenuUC Margin="20,0,20,0" 
+                       Titulo="Comenzar" 
+                       SubTitulo="Permite iniciar la captura de información"
+                       ImagenIcon="Start.png"/>
+            
+            <UC:MenuUC Margin="20,0,20,0" 
+                       Titulo="Descargar" 
+                       SubTitulo="Permite descargar la información"
+                       ImagenIcon="Download.png"/>
+            
+            <UC:MenuUC Margin="20,0,20,0" 
+                       Titulo="Extraer BD" 
+                       SubTitulo="Permite extraer la información local"
+                       ImagenIcon="Extract.png"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

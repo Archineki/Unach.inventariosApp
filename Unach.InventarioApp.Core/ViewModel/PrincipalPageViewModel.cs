@@ -19,5 +19,16 @@ namespace Unach.InventarioApp.Core.ViewModel
                 await Xamarin.Forms.DependencyService.Get<ICustomNavegation>().Regresar();
             }, () => { return true; }));
         }
+
+
+        RelayCommand registroCommand = null;
+        public RelayCommand RegistroCommand
+        {
+            get => registroCommand ?? (registroCommand = new RelayCommand(async () =>
+            {
+                await Xamarin.Forms.DependencyService.Get<ICustomNavegation>().NavegarA("Registro", new object[] { $"Gerardo Lopez Ibañez{DateTime.Now}" });
+
+            }, () => { return true; }));
+        }
     }
 }

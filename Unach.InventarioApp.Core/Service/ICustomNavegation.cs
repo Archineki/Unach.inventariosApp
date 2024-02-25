@@ -9,7 +9,7 @@ namespace Unach.InventarioApp.Core.Service
     {
         Task Regresar();
         Task Inicio();
-        Task NavegarA(string Pagina);
+        Task<bool> NavegarA(string Pagina);
         Task NavegarA(string Pagina, object[] parameters);
     }
 }
